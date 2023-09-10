@@ -67,11 +67,12 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
 
-      // 底部导航栏
+      // 使用底部导航栏实现tab切换，行不通，页面的状态被清除了
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.red,
         currentIndex: pageIndex,
         onTap: (int newValue) {
+          myPrint('底部导航栏切换 当前 newValue = $newValue');
           setState(() {
             pageIndex = newValue;
           });

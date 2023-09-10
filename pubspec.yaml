@@ -36,6 +36,11 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
 
+  json_serializable: ^6.7.1
+  json_annotation: ^4.8.1
+  fijkplayer: ^0.11.0
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -59,9 +64,16 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
+  # 不支持写目录的形式
   assets:
-     - assets/placeholder_image.png
-     - assets/avatar_logo.png
+    - assets/avatar_logo.png
+    - assets/owl-2.jpg
+    - assets/like.png
+    - assets/comment.png
+    - assets/unmark.png
+    - assets/forward.png
+    - assets/video/video1.mp4
+    - assets/video/video2.mp4
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
