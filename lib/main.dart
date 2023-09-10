@@ -50,21 +50,9 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: PageTransitionSwitcher(
-          transitionBuilder: (
-            Widget child,
-            Animation<double> animation,
-            Animation<double> secondaryAnimation,
-          ) {
-            return FadeThroughTransition(
-              animation: animation,
-              secondaryAnimation: secondaryAnimation,
-              child: child,
-            );
-          },
-          child: pageList[pageIndex],
-        ),
+      body: IndexedStack(
+        index: pageIndex,
+        children: pageList,
       ),
 
       // 使用底部导航栏实现tab切换，行不通，页面的状态被清除了
@@ -73,6 +61,16 @@ class _MyHomePageState extends State<MyHomePage> {
         currentIndex: pageIndex,
         onTap: (int newValue) {
           myPrint('底部导航栏切换 当前 newValue = $newValue');
+          if (newValue != 0) {
+            FirstPage firstPage = pageList[0] as FirstPage;
+            myPrint('底部导航栏切换 调用暂停播放');
+            firstPage.pasusePlay();
+          } else {
+            FirstPage firstPage = pageList[0] as FirstPage;
+            myPrint('底部导航栏切换 调用播放');
+            firstPage.startPlay();
+          }
+
           setState(() {
             pageIndex = newValue;
           });

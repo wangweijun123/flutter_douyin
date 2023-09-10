@@ -9,15 +9,26 @@ import 'first_page_controller.dart';
 import 'page_view_item.dart';
 
 class FirstPage extends StatefulWidget {
+  final FijkPlayer player = FijkPlayer();
+
   @override
   State<FirstPage> createState() => _FirstPageState();
+
+  void pasusePlay() {
+    player.pause();
+  }
+
+  void startPlay() {
+    player.start();
+  }
 }
 
 class _FirstPageState extends State<FirstPage> {
   final FirstPageController controller = FirstPageController();
   final PageController pageController = PageController();
-  final FijkPlayer player = FijkPlayer();
+
   var _currentPage = 0;
+
   @override
   void initState() {
     super.initState();
@@ -34,7 +45,7 @@ class _FirstPageState extends State<FirstPage> {
   void dispose() {
     myPrint('_FirstPageState $hashCode dispose.... ');
     super.dispose();
-    player.release();
+    widget.player.release();
   }
 
   @override
@@ -55,9 +66,9 @@ class _FirstPageState extends State<FirstPage> {
     if (controller.dataList.isNotEmpty) {
       // 默认播放第一个，因为第一次 onPageChanged不会改变
       var defaultVideo = controller.dataList[0];
-      player.reset().then((value) {
+      widget.player.reset().then((value) {
         myPrint('重置后播放默认的第一个视频');
-        player.setDataSource(defaultVideo.url, autoPlay: true);
+        widget.player.setDataSource(defaultVideo.url, autoPlay: true);
       });
     }
 
@@ -67,9 +78,9 @@ class _FirstPageState extends State<FirstPage> {
         var videoModel = controller.dataList[currentPage];
         myPrint(
             'onPageChanged currentPage = $currentPage, videoModel = $videoModel');
-        player.reset().then((value) {
+        widget.player.reset().then((value) {
           myPrint('重置后播放');
-          player.setDataSource(videoModel.url, autoPlay: true);
+          widget.player.setDataSource(videoModel.url, autoPlay: true);
         });
       },
       scrollDirection: Axis.vertical,
@@ -90,7 +101,7 @@ class _FirstPageState extends State<FirstPage> {
       widgets.add(createEmptyChild());
     } else {
       for (VideoModel item in dataList) {
-        widgets.add(PageViewItem(item, player));
+        widgets.add(PageViewItem(item, widget.player));
       }
     }
     return widgets;
