@@ -39,6 +39,8 @@ dependencies:
   json_serializable: ^6.7.1
   json_annotation: ^4.8.1
   fijkplayer: ^0.11.0
+  # 状态管理
+  get: ^4.6.5
 
 
 dev_dependencies:
@@ -69,6 +71,7 @@ flutter:
     - assets/avatar_logo.png
     - assets/owl-2.jpg
     - assets/like.png
+    - assets/unlike.png
     - assets/comment.png
     - assets/unmark.png
     - assets/forward.png

@@ -1,7 +1,7 @@
 const jsonArray = '''
     [
       {"id": "1", "url": "asset:///assets/video/video1.mp4", "playCount": 100},
-      {"id": "2", "url": "asset:///assets/video/video2.mp4", "playCount": 125},
+      {"id": "2", "url": "asset:///assets/video/video2.mp4", "playCount": 125, "isLike": true},
       {"id": "3", "url": "asset:///assets/video/video1.mp4", "playCount": 125},
       {"id": "4", "url": "asset:///assets/video/video2.mp4", "playCount": 125},
       {"id": "5", "url": "asset:///assets/video/video1.mp4", "playCount": 125},

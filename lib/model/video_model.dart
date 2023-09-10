@@ -12,7 +12,13 @@ class VideoModel {
   /// exist or is empty.
   final int playCount;
 
-  VideoModel({required this.id, required this.url, required this.playCount});
+  bool isLike;
+
+  VideoModel(
+      {required this.id,
+      required this.url,
+      required this.playCount,
+      required this.isLike});
 
   // 1 fromJson本身是一个构造函数, 加上factory变成了工厂方法
   factory VideoModel.fromJson(Map<String, dynamic> map) => _$VideoFromJson(map);
@@ -21,6 +27,6 @@ class VideoModel {
 
   @override
   String toString() {
-    return 'VideoModel{id: $id, url: $url, playCount: $playCount}';
+    return 'VideoModel{id: $id, url: $url, playCount: $playCount, isLike: $isLike}';
   }
 }

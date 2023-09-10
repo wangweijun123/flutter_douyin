@@ -2,9 +2,10 @@ import 'package:fijkplayer/fijkplayer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../model/video_model.dart';
-import '../util/log_util.dart';
-import '../widget/image_and_text.dart';
+import '../../model/video_model.dart';
+import '../../util/log_util.dart';
+import '../../widget/image_and_text.dart';
+import 'page_view_item_controller.dart';
 
 class PageViewItem extends StatefulWidget {
   final VideoModel item;
@@ -17,6 +18,8 @@ class PageViewItem extends StatefulWidget {
 }
 
 class _PageViewItemState extends State<PageViewItem> {
+  PageViewItemController pageViewItemController = PageViewItemController();
+
   @override
   void initState() {
     super.initState();
@@ -37,10 +40,26 @@ class _PageViewItemState extends State<PageViewItem> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               buildCircleConer(),
-              ImageAndText(widget.item.playCount, 'assets/like.png'),
+              const SizedBox(height: 10),
+              GestureDetector(
+                child: ImageAndText(
+                    widget.item.playCount,
+                    widget.item.isLike
+                        ? 'assets/like.png'
+                        : 'assets/unlike.png'),
+                onTap: () {
+                  setState(() {
+                    widget.item.isLike = true;
+                  });
+                },
+              ),
+              const SizedBox(height: 10),
               ImageAndText(widget.item.playCount, 'assets/comment.png'),
+              const SizedBox(height: 10),
               ImageAndText(widget.item.playCount, 'assets/unmark.png'),
+              const SizedBox(height: 10),
               ImageAndText(widget.item.playCount, 'assets/forward.png'),
+              const SizedBox(height: 10),
             ],
           ),
         ),

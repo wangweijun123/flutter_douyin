@@ -10,6 +10,7 @@ VideoModel _$VideoFromJson(Map<String, dynamic> json) => VideoModel(
       id: json['id'] as String,
       url: json['url'] as String,
       playCount: json['playCount'] as int,
+      isLike: json['isLike'] ?? false,
     );
 
 Map<String, dynamic> _$VideoToJson(VideoModel instance) => <String, dynamic>{

@@ -6,7 +6,7 @@ import '../model/video_model.dart';
 import '../widget/example_card.dart';
 import '../widget/image_and_text.dart';
 import 'first_page_controller.dart';
-import 'page_view_item.dart';
+import 'page_view_item/page_view_item.dart';
 
 class FirstPage extends StatefulWidget {
   final FijkPlayer player = FijkPlayer();
